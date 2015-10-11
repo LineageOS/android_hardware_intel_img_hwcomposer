@@ -21,7 +21,9 @@
 #include <IDisplayDevice.h>
 #include <PrimaryDevice.h>
 #include <ExternalDevice.h>
+#ifdef INTEL_WIDI_MERRIFIELD
 #include <VirtualDevice.h>
+#endif
 #include <Hwcomposer.h>
 #include <PlatFactory.h>
 #include <common/VsyncControl.h>
