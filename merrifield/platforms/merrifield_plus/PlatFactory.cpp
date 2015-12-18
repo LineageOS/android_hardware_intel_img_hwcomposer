@@ -19,6 +19,7 @@
 #include <anniedale/AnnPlaneManager.h>
 #include <PlatfBufferManager.h>
 #include <IDisplayDevice.h>
+#include <DummyDevice.h>
 #include <PrimaryDevice.h>
 #include <ExternalDevice.h>
 #include <VirtualDevice.h>
@@ -74,6 +75,8 @@ IDisplayDevice* PlatFactory::createDisplayDevice(int disp)
            return new PrimaryDevice(hwc, new PlatDeviceControlFactory());
         case IDisplayDevice::DEVICE_EXTERNAL:
             return new ExternalDevice(hwc, new PlatDeviceControlFactory());
+        case IDisplayDevice::DEVICE_TERTIARY:
+            return new DummyDevice(disp, hwc);
         case IDisplayDevice::DEVICE_VIRTUAL:
             return new VirtualDevice(hwc);
         default:
