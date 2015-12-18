@@ -463,7 +463,11 @@ struct VirtualDevice::BlitTask : public VirtualDevice::RenderTask {
         SYNC_WAIT_AND_CLOSE(srcAcquireFenceFd);
         SYNC_WAIT_AND_CLOSE(destAcquireFenceFd);
         BufferManager* mgr = vd.mHwc.getBufferManager();
+#ifdef LP_BLOBS
+        if (!(mgr->blit(srcHandle, destHandle, destRect, false))) {
+#else
         if (!(mgr->blit(srcHandle, destHandle, destRect, false, false))) {
+#endif
             ETRACE("color space conversion from RGB to NV12 failed");
         }
         else
@@ -1266,7 +1270,11 @@ bool VirtualDevice::queueCompose(hwc_display_contents_1_t *display)
             destRect.y = 0;
             destRect.w = composeTask->outWidth;
             destRect.h = composeTask->outHeight;
+#ifdef LP_BLOBS
+            if (!mgr->blit(rgbLayer.handle, scalingBuffer, destRect, true))
+#else
             if (!mgr->blit(rgbLayer.handle, scalingBuffer, destRect, true, true))
+#endif
                 return true;
             composeTask->rgbHandle = scalingBuffer;
             composeTask->heldRgbHandle = heldUpscaleBuffer;
