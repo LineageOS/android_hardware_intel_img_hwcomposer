@@ -34,6 +34,7 @@ LOCAL_SRC_FILES := \
     ../../common/buffers/BufferCache.cpp \
     ../../common/buffers/GraphicBuffer.cpp \
     ../../common/buffers/BufferManager.cpp \
+    ../../common/devices/DummyDevice.cpp \
     ../../common/devices/PhysicalDevice.cpp \
     ../../common/devices/PrimaryDevice.cpp \
     ../../common/devices/ExternalDevice.cpp \

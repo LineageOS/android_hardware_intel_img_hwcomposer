@@ -19,6 +19,7 @@
 #include <anniedale/AnnPlaneManager.h>
 #include <PlatfBufferManager.h>
 #include <IDisplayDevice.h>
+#include <DummyDevice.h>
 #include <PrimaryDevice.h>
 #include <ExternalDevice.h>
 #ifdef INTEL_WIDI_MERRIFIELD
@@ -76,9 +77,13 @@ IDisplayDevice* PlatFactory::createDisplayDevice(int disp)
            return new PrimaryDevice(hwc, new PlatDeviceControlFactory());
         case IDisplayDevice::DEVICE_EXTERNAL:
             return new ExternalDevice(hwc, new PlatDeviceControlFactory());
-#ifdef INTEL_WIDI_MERRIFIELD
+        case IDisplayDevice::DEVICE_TERTIARY:
+            return new DummyDevice(disp, hwc);
         case IDisplayDevice::DEVICE_VIRTUAL:
+#ifdef INTEL_WIDI_MERRIFIELD
             return new VirtualDevice(hwc);
+#else
+            return new DummyDevice(disp, hwc);
 #endif
         default:
             ETRACE("invalid display device %d", disp);
