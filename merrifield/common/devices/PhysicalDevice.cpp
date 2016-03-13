@@ -511,20 +511,18 @@ void PhysicalDevice::dump(Dump& d)
 
 bool PhysicalDevice::setPowerMode(int mode)
 {
-    // TODO: set proper power modes for HWC 1.4
-    ATRACE("mode = %d", mode);
-
-    bool ret;
-    int arg = mode;
-
-    Drm *drm = Hwcomposer::getInstance().getDrm();
-    ret = drm->writeIoctl(DRM_PSB_PM_SET, &arg, sizeof(arg));
-    if (ret == false) {
-          ETRACE("psb power mode set fail");
-          return false;
+    // TODO: set proper blanking modes for HWC 1.4 modes
+    switch (mode) {
+        case HWC_POWER_MODE_OFF:
+            return blank(true);
+        case HWC_POWER_MODE_DOZE:
+        case HWC_POWER_MODE_NORMAL:
+        case HWC_POWER_MODE_DOZE_SUSPEND:
+            return blank(false);
+        default:
+            return false;
     }
-
-    return true;
+    return false;
 }
 
 int PhysicalDevice::getActiveConfig()
