@@ -82,9 +82,10 @@ bool Hwcomposer::prepare(size_t numDisplays,
             continue;
         }
 
+#ifndef ASUS_ZENFONE2_LP_BLOBS
         if (device->getType() == IDisplayDevice::DEVICE_VIRTUAL)
             continue;
-
+#endif
         device->prePrepare(displays[i]);
     }
 
@@ -94,10 +95,10 @@ bool Hwcomposer::prepare(size_t numDisplays,
             VTRACE("device %d doesn't exist", i);
             continue;
         }
-
+#ifndef ASUS_ZENFONE2_LP_BLOBS
         if (device->getType() == IDisplayDevice::DEVICE_VIRTUAL)
             continue;
-
+#endif
         ret = device->prepare(displays[i]);
         if (ret == false) {
             ETRACE("failed to do prepare for device %d", i);
@@ -137,10 +138,10 @@ bool Hwcomposer::commit(size_t numDisplays,
             VTRACE("device %d is disconnected", i);
             continue;
         }
-
+#ifndef ASUS_ZENFONE2_LP_BLOBS
         if (device->getType() == IDisplayDevice::DEVICE_VIRTUAL)
             continue;
-
+#endif
         ret = device->commit(displays[i], mDisplayContext);
         if (ret == false) {
             ETRACE("failed to do commit for device %d", i);
