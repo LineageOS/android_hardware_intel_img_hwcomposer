@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b44a455d_6022394e",
+        "filename": "merrifield/common/devices/PhysicalDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 18171
+      },
+      "writtenOn": "2017-09-05T07:02:03Z",
+      "side": 1,
+      "message": "It is also possible to update kernel.\nHere are related code in a newer version compare to the one of the moorefield:\nhttps://github.com/zefie/nxt_ares8_kernel/blob/8148e38dc67adaca75deb6aefc4109eb5edbc96a/drivers/external_drivers/intel_media/interface/psb_drm.h#L1083\nhttps://github.com/zefie/nxt_ares8_kernel/blob/8148e38dc67adaca75deb6aefc4109eb5edbc96a/drivers/external_drivers/intel_media/display/tng/drv/psb_drv.c#L725\nhttps://github.com/zefie/nxt_ares8_kernel/blob/8148e38dc67adaca75deb6aefc4109eb5edbc96a/drivers/external_drivers/intel_media/display/tng/drv/psb_intel_display.c#L1210",
+      "revId": "55138396e97d5ea3c8458e9b25f5af56f5c3b51f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
