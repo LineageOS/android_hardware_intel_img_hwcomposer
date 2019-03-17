@@ -23,6 +23,8 @@ include $(CLEAR_VARS)
 # HwcModule.cpp uses GNU old-style field designator extension.
 LOCAL_CLANG_CFLAGS += -Wno-gnu-designator
 
+LOCAL_HEADER_LIBRARIES += generated_kernel_headers
+
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := hwcomposer.$(TARGET_BOARD_PLATFORM)
@@ -32,7 +34,7 @@ LOCAL_SHARED_LIBRARIES := liblog libcutils libdrm \
                           libwsbm libutils libhardware \
                           libva libva-tpi libva-android libsync
 
-LOCAL_HEADER_LIBRARIES := libsystem_headers
+LOCAL_HEADER_LIBRARIES += libsystem_headers
 
 LOCAL_SRC_FILES := \
     common/base/Drm.cpp \

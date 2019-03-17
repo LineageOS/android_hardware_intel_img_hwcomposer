@@ -27,6 +27,7 @@
 #include <hardware/gralloc1.h>
 
 #include <stdlib.h>
+#include <errno.h>
 
 #define GRALLOC1_FUNCTION_IMG_EXT_OFF 1000
 
