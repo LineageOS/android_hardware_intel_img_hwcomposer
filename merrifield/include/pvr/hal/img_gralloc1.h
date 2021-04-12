@@ -160,7 +160,7 @@ static inline int gralloc1_device_alloc_img
 			break;
 		case GRALLOC1_ERROR_NO_RESOURCES:
 			err = -EAGAIN;
-                        __attribute__((fallthrough));
+			goto err_destroy_descriptor;
 		default:
 			goto err_destroy_descriptor;
 	}
